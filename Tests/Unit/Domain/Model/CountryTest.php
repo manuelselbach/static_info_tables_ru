@@ -1,4 +1,5 @@
 <?php
+
 namespace Mselbach\StaticInfoTablesRu\Tests\Unit\Domain\Model;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
@@ -8,7 +9,7 @@ use Nimut\TestingFramework\TestCase\UnitTestCase;
  */
 class CountryTest extends UnitTestCase
 {
-    public function testRegistration()
+    public function testRegistration(): void
     {
     }
 }
