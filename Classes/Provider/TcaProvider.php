@@ -2,6 +2,9 @@
 
 namespace Mselbach\StaticInfoTablesRu\Provider;
 
+use Mselbach\StaticInfoTablesRu\Extension;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -28,9 +31,6 @@ namespace Mselbach\StaticInfoTablesRu\Provider;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Mselbach\StaticInfoTablesRu\Extension;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-
 class TcaProvider
 {
     /**
@@ -38,11 +38,7 @@ class TcaProvider
      */
     protected static $LL = 'LLL:EXT:%s/Resources/Private/Language/locallang_db.xlf:%s_item.%s';
 
-    /**
-     * @param $additionalFields
-     * @param $dataSetName
-     */
-    public static function generateAndRegisterTca($additionalFields, $dataSetName)
+    public static function generateAndRegisterTca(array $additionalFields, string $dataSetName): void
     {
         foreach ($additionalFields as $sourceField => $destField) {
             $additionalColumns = [];
