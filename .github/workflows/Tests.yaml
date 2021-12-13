@@ -20,7 +20,7 @@ jobs:
     name: PHP ${{ matrix.php }}, TYPO3 ${{ matrix.typo3 }} tests
     steps:
       - name: Start database server
-        run: sudo /etc/init.d/mysql start
+        run: sudo service mysql start
 
       - name: Checkout
         uses: actions/checkout@v2
