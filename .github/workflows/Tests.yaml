@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies with nimut/typo3-complete:${{ matrix.typo3 }}
         if: matrix.typo3 != 'dev-master'
         run: |
-          composer require --dev nimut/typo3-complete:${{ matrix.typo3 }} --no-progress
+          composer require --dev --with-all-dependencies nimut/typo3-complete:${{ matrix.typo3 }} --no-progress
           git checkout composer.json
 
       - name: Install dependencies with nimut/typo3-complete:dev-master and PHP == 7.4
@@ -50,7 +50,7 @@ jobs:
         continue-on-error: true
         run: |
           rm -rf composer.lock .Build
-          composer require --dev --no-progress nimut/typo3-complete:dev-master saschaegerer/phpstan-typo3:"*" nimut/testing-framework:"*"
+          composer require --dev --no-progress --with-all-dependencies nimut/typo3-complete:dev-master saschaegerer/phpstan-typo3:"*" nimut/testing-framework:"*"
           git checkout composer.json
 
       - name: Code Style
