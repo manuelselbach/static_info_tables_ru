@@ -29,6 +29,11 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
+
+      # Remove roave/security-advisories to be able to get an installable set of packages,
+      # as all versions of TYPO3 9.5 and 10.5 are marked as vulnerable and this is not relevant
+      # for the test scenario
+      - run: composer remove --dev roave/security-advisories
       - run: composer install --no-progress
       - run: composer analyse
 
@@ -49,5 +54,10 @@ jobs:
         with:
           php-version: 7.2
           coverage: none
+
+      # Remove roave/security-advisories to be able to get an installable set of packages,
+      # as all versions of TYPO3 9.5 and 10.5 are marked as vulnerable and this is not relevant
+      # for the test scenario
+      - run: composer remove --dev roave/security-advisories
       - run: composer install --no-progress
       - run: .Build/bin/phpcs --runtime-set ignore_warnings_on_exit true

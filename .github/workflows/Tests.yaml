@@ -31,6 +31,11 @@ jobs:
           php-version: ${{ matrix.php }}
           tools: composer:v2
 
+      # Remove roave/security-advisories to be able to get an installable set of packages,
+      # as all versions of TYPO3 9.5 and 10.5 are marked as vulnerable and this is not relevant
+      # for the test scenario
+      - run: composer remove --dev roave/security-advisories
+
       - name: Validate composer.json and composer.lock
         run: composer validate
 
